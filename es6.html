@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+	<title>测试es6语法</title>
+</head>
+<body>
+
+<script type="text/javascript">
+ function test01(){
+	/*   let和const命令  */
+
+	/*	 ES6 新增了let命令，用来声明变量。它的用法类似于var，但是所声明的变量，只在let命令所在的代码块内有效。 */
+	{
+		let a=10;
+		var b=1;
+	}
+	console.log(a); // ReferenceError: a is not defined
+	console.log(b);  // 1
+
+	/*	for循环的计数器，就很合适使用let命令。 */
+
+	for(var i=0;i<9;i++){
+
+	}
+	 console.log(i); // 9
+
+	for(let j=0;j<9;j++){
+
+	}
+	 console.log(j); // ReferenceError: j is not defined
+ }
+
+
+/*  下面的例子中使用var 和 let 输出的结果也是不一样的 */
+ function test02(){
+ 	var a=[];
+ 	for(let i=0;i<10;i++){
+ 		a[i]=function(){
+ 			console.log(i);
+ 		}
+ 	}
+ 	a[6]();
+ }
+ // test02(); // 6
+
+
+function test03(){
+	var a=[];
+	for(var i=0;i<10;i++){
+		a[i]=function(){
+			console.log(i);
+		}
+	}
+	a[6]() // 10
+}
+// test03();
+
+
+// 不存在变量提升 
+function test04(){
+	console.log(foo); // undefined
+	var foo=1;
+
+	console.log(bar); // ReferenceError: bar is not defined
+	let bar=2;
+}
+// test04();
+
+
+// 暂时性死区
+// 只要块级作用域内存在let命令,它所申明的变量就"绑定"这个区域,不再受到外部影响。
+function test05(){
+	var tmp=123;
+	if(true){
+		tmp=456;
+		let tmp;
+	}
+}
+// test05(); 	// ReferenceError: tmp is not defined
+/*
+	上面代码中，存在全局变量tmp，但是块级作用域内let又声明了一个局部变量tmp，导致后者绑定这个块级作用域，所以在let声明变量前，对tmp赋值会报错。
+*/
+
+
+//  不允许重复申明
+	function test06(){
+		let a=10;
+		var a=11;
+	}
+	test06(); // SyntaxError: Identifier 'a' has already been declared
+</script>
+</body>
+</html>

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+	<title>对象的扩展</title>
+</head>
+<body>
+	<script type="text/javascript">
+		// 5. Object.assign()
+		/*	Object.assign()方法用于对象的合并	*/
+		function test01(){
+			var target={a:1};
+			var source1={b:2};
+			var source2={c:3};
+
+			Object.assign(target,source1,source2);
+			console.log(target); {a:1,b:2,c:3}
+		}
+		// test01();
+	</script>
+</body>
+</html>

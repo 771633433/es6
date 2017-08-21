@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+	<title>const命令</title>
+</head>
+<body>
+	<script type="text/javascript">
+		function test01(){
+			/*	const声明一个只读的常量。一旦声明，常量的值就不能改变。	*/
+			/*	const保证的,并不是变量的值不得改动,而是变量指向的那个内存地址不得改动*/
+			const foo={};
+			foo.pro=123;
+			console.log(foo.pro);// 123
+
+			foo={
+				a:1,
+				b:2
+			}
+			console.log(foo); //Uncaught TypeError: Assignment to constant variable
+		}
+		// test01();
+
+
+// const只是保证地址不变，实际上对于对象来说值是可以改变的
+		function test02(){
+			const foo={
+				a:1,
+				b:2
+			}
+			foo.a=9;
+			foo.b=99;
+			console.log(foo); // {a:9,b:99}
+		}
+		// test02();
+	</script>
+</body>
+</html>

@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+	<title>数组的扩展</title>
+</head>
+<body>
+<script type="text/javascript">
+	// 1.扩展运算符 ...
+	function test01(){
+		console.log(...[1,2,3]); // 1 2 3
+		console.log(1,...[2,3,4],5); // 1 2 3 4 5
+	}
+	// test01();
+
+	function test02(){
+			// 可以求一个数组里面的最大值与最小值
+		console.log(Math.max(...[14,2,3])); // 14
+
+			// 可以将字符串转化为真正的数组
+		console.log([...'hello']);  // ['h','e','l','l','o']
+
+			// 任何 Iterator遍历接口的对象,都可以用扩展运算符转化为真正的数组。
+	}
+	
+
+	// 2. Array.from()
+	/*
+		Array.from()方法用于将两类对象转化为真正的数组: 类数组对象和可遍历(iterator)的对象.
+	*/
+	function test03(){
+		let arrayLike={
+			'0':'a',
+			'1':'b',
+			'2':'c',
+			length:3
+		};
+		let arr2=Array.from(arrayLike);
+		console.log(arr2); // ['a','b','c']
+	}
+	// test03();
+
+
+	// 3. Array.of()
+		/*	Array.of()方法用于将一组值在,转化为数组.	*/
+	function test04(){
+		console.log(Array.of(3,11,2)); // [3,11,2]
+	}
+	// test04();
+
+
+	// 5.find()和findIndex()
+
+	/* 数组实例的find方法,用于找出第一个符合条件的数组成员,它的参数是一个回调函数，所有数组成员依次执行该回调函数，直到找出第一个返回值为true的成员，然后返回该成员。如果没有符合条件的成员，则返回undefined。*/
+	function test05(){
+		console.log([1,4,-5,-10,3].find(n=>n<0)); // -5
+
+		console.log([1,5,10,15].find((value,index,arr)=>value>9));
+	}
+	// test05();
+
+
+	// 6. 数组实例的fill()
+	['a','b','c'].fill(7); // [7,7,7]
+	['a','b','c'].fill(7,1,2); // ['a',7,'c']
+
+
+	// 7.数组实例的 entries(),keys()和values()
+	/*	ES6 提供三个新的方法——entries()，keys()和values()——用于遍历数组。它们都返回一个遍历器对象（详见《Iterator》一章），可以用for...of循环进行遍历，唯一的区别是keys()是对键名的遍历、values()是对键值的遍历，entries()是对键值对的遍历。*/
+	function test08(){
+		for(let index of ['a','b'].keys()){
+				console.log(index);
+				console.log(ele);
+		}
+	}
+	for(let elem of ['a','b'].values()){
+		console.log(elem);
+		// 0
+		// 1
+	}
+
+	for(let [index,elem] of ['a','b'].entries()){
+		console.log(index,elem);
+		// 0:"a"
+		// 1:"b"
+	}
+
+	// 8. 数组实例的includes()
+	function test09(){
+		[1,2,3].includes(3);  // true
+		[1,2,3].includes(4);  // flase
+		[1,2,NaN].includes(NaN); // true
+	}
+</script>
+</body>
+</html>
