@@ -37,7 +37,14 @@
 				参数为-0，返回-0;
 				其他值，返回NaN。
 		*/
-
+			function test03(){
+				console.log(Math.sign(2.1)); // 1
+				console.log(Math.sign(-2.1)); // -1
+				console.log(Math.sign(-0)); //  -0
+				console.log(Math.sign(+0));//  0 
+				console.log(Math.sign("hello")); // NaN
+			}
+			// test03();
 
 		/*
 			Math.cbrt() 方法用来计算一个数的立方根
