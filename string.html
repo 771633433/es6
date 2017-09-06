@@ -48,7 +48,29 @@
  					 are on sale!
 				`);
 			}
-			test02();
+			// test02();
+		
+		
+			/*
+			 传统上，JavaScript只有indexOf方法，可以用来确定一个字符串是否包含在另一个字符串中。ES6又提供了三种新方法。 includes()   startsWith()  endsWith()
+			*/ 
+			function test03(){
+				var s='Hello world';
+				console.log(s.startsWith('h')); // false
+				console.log(s.startsWith('He')); // true
+
+				console.log(s.endsWith('ld')); //  true
+
+				console.log(s.includes('e')); // true
+
+				/* 
+					这三个方法都支持第二个参数，表示开始搜索的位置。
+				*/
+				console.log(s.startsWith('world', 6)); // true
+				console.log(s.endsWith('Hello', 5)); // true
+				console.log(s.includes('Hello', 6)); // false	 
+			}
+			test03();
 	</script>
 </body>
 </html>
