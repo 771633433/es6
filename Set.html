@@ -151,9 +151,17 @@
 			function test08(){
 					let s1=new Set([1,2,3,3,4]);
 					let s2=new Set([2,3,4,4,5]);
-				
+				// 并集
 					var s3=new Set([...s1,...s2]);
 					console.log(s3); // Set(5)  [1,2,3,4,5]
+				
+				// 交集
+					let intersect = new Set([...s1].filter(x => s2.has(x)));
+					// set {2, 3,4} 
+
+				// 差集
+					let difference = new Set([...s1].filter(x => !s2.has(x)));
+					// Set {1}  [1]
 			}
 			// test08();
 		
