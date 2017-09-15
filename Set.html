@@ -145,6 +145,17 @@
 					// 2 4 6 undefined
 			}
 			// test07();
+		
+		
+		//使用 Set 可以很容易地实现并集（Union）、交集（Intersect）和差集（Difference）。
+			function test08(){
+					let s1=new Set([1,2,3,3,4]);
+					let s2=new Set([2,3,4,4,5]);
+					var s3=new Set([...s1,...s2]);
+					console.log(s3); // Set(5)  [1,2,3,4,5]
+			}
+			// test08();
+		
 	</script>
 </body>
 </html>
