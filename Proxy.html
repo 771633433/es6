@@ -97,6 +97,19 @@
 			// 发现已经被设置为35,再次赋值没用了
 		}
 		// test04();
+		
+		
+		// Proxy实例也可以作为其它对象的原型对象
+		function test05(){
+			var proxy=new Proxy({},{
+				get(target,property){
+					return 35;
+				}
+			});
+			let obj=Object.create(proxy);
+			console.log(obj.time);  // 35
+		}
+		// test05()
 	</script>
 </body>
 </html>
