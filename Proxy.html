@@ -67,6 +67,36 @@
 		/*
 			注意，要使得Proxy起作用，必须针对Proxy实例（上例是proxy对象）进行操作,而不是针对目标对象（上例是空对象）进行操作。
 		*/
+		
+		
+		
+		// 如果handler没有设置任何拦截，那就等同于直接通向原对象。
+		function test03(){
+			var target={};
+			var handler={};
+			var proxy=new Proxy(target,handler);
+			proxy.a='b';
+			console.log(proxy.a); // b
+			console.log(proxy.b); // undefined
+		}
+		// test03();
+
+		// 设置了拦截的情况
+		function test04(){
+			var target={};
+			var handler={
+				get(){
+					return 35;
+				}
+			};
+			var proxy=new Proxy(target,handler)
+			console.log(proxy.a); // 35
+			console.log(proxy.b); // 35
+			proxy.a=40;
+			console.log(proxy.a);  // 35
+			// 发现已经被设置为35,再次赋值没用了
+		}
+		// test04();
 	</script>
 </body>
 </html>
