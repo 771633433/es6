@@ -138,6 +138,25 @@
 			console.log(fproxy.foo); // hello foo
 		}
 		// test06();
+		
+		/*
+			（1）get(target, propKey, receiver)
+
+				拦截对象属性的读取，比如proxy.foo和proxy['foo']。
+				最后一个参数receiver是一个对象，可选，参见下面Reflect.get的部分。
+
+			（2）set(target, propKey, value, receiver)
+
+			拦截对象属性的设置，比如proxy.foo = v或proxy['foo'] = v，返回一个布尔值。
+
+			（3）has(target, propKey)
+
+			拦截propKey in proxy的操作，返回一个布尔值。
+
+			（4）deleteProperty(target, propKey)
+
+			拦截delete proxy[propKey]的操作，返回一个布尔值。
+		*/
 	</script>
 </body>
 </html>
