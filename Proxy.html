@@ -110,6 +110,34 @@
 			console.log(obj.time);  // 35
 		}
 		// test05()
+		
+		
+		// 同一个拦截器函数，可以设置拦截多个操作。
+		function test06(){
+			var target={};
+			var handler={
+				get(target,name){
+					if(name=='prototype'){
+						return Object.prototype;
+					}
+					return `hello ${name}`
+				},
+				apply(target,thisBinding,args){
+					return args[0]
+				},
+				construct(target,args){
+					return {value:args[1]}
+				}
+			};
+
+			var fproxy=new Proxy((x,y)=>{
+				return x+y
+			},handler);	
+			console.log(fproxy(1,2)); // 1
+			console.log(fproxy.prototype==Object.prototype); // true
+			console.log(fproxy.foo); // hello foo
+		}
+		// test06();
 	</script>
 </body>
 </html>
