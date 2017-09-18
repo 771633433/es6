@@ -157,6 +157,37 @@
 
 			拦截delete proxy[propKey]的操作，返回一个布尔值。
 		*/
+		
+		
+		
+		// Proxy实例的方法
+
+		/*	1.	get()	*/ 
+		/*  
+			get方法用于拦截某个属性的读取操作。上文已经有一个例子，下面是另一个拦截读取操作的例子。	
+		*/
+		function test07(){
+			var person={
+				name:'张三'
+			};
+
+			var proxy=new Proxy(person,{
+				get(target,property){
+					if(property in target){
+						return target[property]
+					}else{
+						throw new ReferenceError("Property \"" + property + "\" does not exist.");
+					}
+				}
+			});
+			console.log(proxy.name); // 张三
+			console.log(proxy.age); // Proxy.html:176 Uncaught ReferenceError: Property "age" does not exist.
+			/*
+				上面代码表示，如果访问目标对象不存在的属性，会抛出一个错误。如果没有这个拦截函数，访问不存在的属性，只会返回undefined。
+			*/
+		}
+		//  test07();
+
 	</script>
 </body>
 </html>
