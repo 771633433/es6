@@ -263,6 +263,21 @@
 			console.log(person.age); // Uncaught TypeError: The age is not a integer
 		}
 		test10();
+		
+		
+		// 下面是一个例子
+		function test11(){
+			var target = function () { return 'I am the target'; };
+			var handler = {
+			  apply: function () {
+			    return 'I am the proxy';
+			  }
+			};
+			var p = new Proxy(target, handler);
+			p()
+			console.log(p()); // "I am the proxy"		
+		}
+		// test11();
 	</script>
 </body>
 </html>
