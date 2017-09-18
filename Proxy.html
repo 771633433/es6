@@ -206,6 +206,63 @@
 		}
 		// test08();
 
+		
+		// 如果一个属性不可配置（configurable）和不可写（writable），则该属性不能被代理，通过 Proxy 对象访问该属性会报错。
+		function test09(){
+			const target=Object.defineProperties({},{
+				foo:{
+					value:123,
+					writable:false,
+					configuable:false
+				}
+			})
+
+			const handler={
+				get(target,propKey){
+					return 'abc'
+				}
+			}
+
+			const proxy=new Proxy(target,handler)
+			console.log(proxy.foo); // TypeError: 'get' on proxy: property 'foo' is a read-only and non-configurable data property on the proxy
+
+			// 将 writable configuable都设置为true  就可以访问该属性了
+		}
+		// test09();
+
+
+		/*	2.	set()	*/ 
+		/*	set方法用来拦截某个属性的赋值操作	*/
+		/*
+			假定Person对象有一个age属性，该属性应该是一个不大于200的整数，那么可以使用Proxy保证age的属性值符合要求。
+		*/
+		function test10(){
+			let validator={
+				set(obj,prop,value){
+					if(prop=='age'){
+						if(!Number.isInteger(value)){
+							throw new TypeError('The age is not a integer');
+						}
+						if(value>200){
+							throw new RangeError('The age seems invalid');
+						}
+					}
+					// 对于age以外的属性,直接保存
+					obj[prop]=value;
+				}
+			};
+
+			let person=new Proxy({},validator);
+			person.age=100;
+			console.log(person.age); // 100
+
+			person.age='young'
+			console.log(person.age);// Uncaught TypeError: The age is not a integer
+			
+			person.age=300;
+			console.log(person.age); // Uncaught TypeError: The age is not a integer
+		}
+		test10();
 	</script>
 </body>
 </html>
