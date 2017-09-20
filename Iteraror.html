@@ -27,5 +27,31 @@
 		具体来说，就是返回一个包含value和done两个属性的对象。
 		其中，value属性是当前成员的值，done属性是一个布尔值，表示遍历是否结束。
 	-->
+	
+	<script type="text/javascript">
+		function test01(){
+			var it=makeIterator(['a','b']);
+			console.log(it.next()); // {value: "a", done: false}
+			console.log(it.next()); // {value: "b", done: false}
+			console.log(it.next()); // {value: undefined, done: true}
+
+			function makeIterator(array){
+				var nextIndex=0;
+				return {
+					next(){
+						return nextIndex<array.length?{value:array[nextIndex++],done:false}:
+													  {value:undefined,done:true};
+					}
+				}
+			}
+		}
+		// test01();
+		/*
+			上面代码定义了一个makeIterator函数,它是一个遍历器生成函数，作用就是返回一个遍历器对象。对数组['a', 'b']执行这个函数，就会返回该数组的遍历器对象（即指针对象）it。
+
+			指针对象的next方法，用来移动指针。开始时，指针指向数组的开始位置。然后，每次调用next方法，指针就会指向数组的下一个成员。第一次调用,指向a,第二次调用,指向b。
+
+			next方法返回一个对象,表示当前数据成员的信息。这个对象具有value和done两个属性，value属性返回当前位置的成员，done属性是一个布尔值,表示遍历是否结束,即是否还有必要再一次调用next方法。
+		*/
 </body>
 </html>
