@@ -27,5 +27,24 @@
 		具体来说，就是返回一个包含value和done两个属性的对象。
 		其中，value属性是当前成员的值，done属性是一个布尔值，表示遍历是否结束。
 	-->
+	
+	<script type="text/javascript">
+		function test01(){
+			var it=makeIterator(['a','b']);
+			console.log(it.next()); // {value: "a", done: false}
+			console.log(it.next()); // {value: "b", done: false}
+			console.log(it.next()); // {value: undefined, done: true}
+
+			function makeIterator(array){
+				var nextIndex=0;
+				return {
+					next(){
+						return nextIndex<array.length?{value:array[nextIndex++],done:false}:
+													  {value:undefined,done:true};
+					}
+				}
+			}
+		}
+		// test01();
 </body>
 </html>
