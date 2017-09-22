@@ -54,5 +54,25 @@
 
 			next方法返回一个对象,表示当前数据成员的信息。这个对象具有value和done两个属性，value属性返回当前位置的成员，done属性是一个布尔值,表示遍历是否结束,即是否还有必要再一次调用next方法。
 		*/
+		
+		function test02(){
+			// 对象没有Symbol.Iterator属性,因此不能遍历
+			var obj={
+				a:1,
+				b:2
+			}
+			console.log(obj.__proto__);
+
+
+			// 数组有Symbol.Iterator属性,因此可以遍历
+			var obj2=[1,2,3,4];
+			console.log(obj2.__proto__);
+
+			// String有Symbol.Iterator属性,因此可以遍历
+			var str='html';
+			console.log(str.__proto__);
+
+		}
+		 // test02();
 </body>
 </html>
