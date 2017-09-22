@@ -74,5 +74,32 @@
 
 		}
 		 // test02();
+		
+		function test03(){
+		 	const obj={
+		 		[Symbol.iterator]:function(){
+			 		return {
+			 			next(){
+			 				return{
+			 					value:33,
+			 					done:true
+			 				}
+			 			}
+		 			}
+		 		}
+		 	}
+		 	obj.a=123;
+		 	obj.b=456;
+		 	obj.c=789;
+		 	for(var i in obj){
+				//console.log(i);  // a   b   c
+		 	}
+		 	//console.log(obj.__proto__)
+		 	// 经过测试,可以循环 	
+		 	/*
+				上面代码中，对象obj是可遍历的（iterable），因为具有Symbol.iterator属性。执行这个属性，会返回一个遍历器对象。该对象的根本特征就是具有next方法。每次调用next方法，都会返回一个代表当前成员的信息对象，具有value和done两个属性。
+		 	*/	
+		 }
+		 // test03();
 </body>
 </html>
