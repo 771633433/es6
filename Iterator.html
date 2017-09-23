@@ -101,5 +101,20 @@
 		 	*/	
 		 }
 		 // test03();
+		
+		
+		  // 下面例子是数组的Symbol.iterator属性
+		  function test04(){
+		  	  	let arr=['a','b','c'];
+		  	  	let iter=arr[Symbol.iterator]();
+				console.log(iter.next()); // {value: "a", done: false}
+				console.log(iter.next()); // {value: "b", done: false}
+				console.log(iter.next()); // {value: "c", done: false}
+				console.log(iter.next()); // {value: undefined, done: true}
+				/*
+					上面代码中，变量arr是一个数组，原生就具有遍历器接口，部署在arr的Symbol.iterator属性上面。所以，调用这个属性，就得到遍历器对象。
+				*/
+		  }
+		  //test04()
 </body>
 </html>
