@@ -116,5 +116,19 @@
 				*/
 		  }
 		  //test04()
+		
+		// 调用 Iterator 接口的场合
+		  // (1). 解构赋值
+		  function test05(){
+		  		let set = new Set().add('a').add('b').add('c');
+		  		let [x,y] = set;
+		  		//console.log(x); // a
+		  		//console.log(y); // b
+
+		  		let [first, ...rest] = set;
+		  		// console.log(first);  // a
+		  		// console.log(rest);  // [b,c]
+		  }
+		  // test05();
 </body>
 </html>
