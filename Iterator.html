@@ -157,7 +157,7 @@
 		  }
 		  // test07();
 		
-		// (4). 其它场合
+		// (3). 其它场合
 		  /*
 				由于数组的遍历会调用遍历器接口，所以任何接受数组作为参数的场合，其实都调用了遍历器接口。下面是一些例子。
 
@@ -168,5 +168,17 @@
 				Promise.race()
 
 		  */
+		
+		  // (4).字符串的Iterator接口
+		  function test08(){
+		  		var someString='hi'
+		  		console.log(typeof someString[Symbol.iterator]); // function
+
+		  		var iterator=someString[Symbol.iterator]()
+		  		console.log(iterator.next()); // { value: "h", done: false }
+		  		console.log(iterator.next()); // { value: "i", done: false }
+		  		console.log(iterator.next()); // { value: undefined, done: true }
+		  }
+		  // test08()
 </body>
 </html>
