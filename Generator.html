@@ -88,6 +88,21 @@
 			 // 2秒钟后控制台打印
 		}
 		// test02();
+		
+		function test03(){
+			// 与 Iterator接口的关系
+			// 由于 Generator 函数就是遍历器生成函数，因此可以把 Generator 赋值给对象的Symbol.iterator属性，从而使得该对象具有 Iterator 接口。
+
+			var myIterator={}
+			myIterator[Symbol.iterator]=function* (){
+				yield 1;
+				yield 2;
+				yield 3;
+				return '结束了 ！'
+			}
+			console.log([...myIterator]);  // [1,2,3]	
+		}
+		//  test03();
 	</script>
 </body>
 </html>
