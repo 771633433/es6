@@ -148,6 +148,21 @@
 		 		// console.log(b.next(13)); // {value:42,done:true}
 		 }
 		   // test05();
+		
+		function test06(){
+		   		function* dataConsumer(){
+		   			console.log(`Started`);
+		   			console.log(`1. ${yield}`);
+		   			console.log(`2. ${yield}`);
+		   			return 'result'
+		   		}
+
+		   		let genObj=dataConsumer();
+		   		genObj.next(); // Started
+		   		genObj.next('a');// 1.a
+		   		genObj.next('a');// 2.a
+		   }
+		  // test06();
 	</script>
 </body>
 </html>
