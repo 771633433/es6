@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+	<title>class的语法</title>
+</head>
+<body>
+<script type="text/javascript">
+/*
+	JavaScript 语言中，生成实例对象的传统方法是通过构造函数。下面是一个例子。
+*/
+
+function test01(){
+	function Point(x,y){
+		this.x=x;
+		this.y=y;
+	}
+
+	Point.prototype.toString=function(){
+		return '('+this.x+','+this.y+')'
+	}
+
+	var p=new Point(2,3)
+	console.log(p);  // Point{x:2,y:3}
+}
+// test01();	
+
+	// ES6 提供了更接近传统语言的写法，引入了 Class（类）这个概念，作为对象的模板。通过class关键字，可以定义类。
+
+function test02(){
+	// 定义类
+	class Point{
+		constructor(x,y){
+			this.x=x;
+			this.y=y;
+		}
+
+		toString(){
+			return '(' + this.x + ', ' + this.y + ')';
+		}
+	}
+	var p=new Point(2,3);
+	console.log(typeof p.toString()); // string
+	console.log(p.toString()); // (2,3)
+
+	/*
+		上面代码定义了一个“类”，可以看到里面有一个constructor方法，这就是构造方法，而this关键字则代表实例对象。也就是说，ES5 的构造函数Point，对应 ES6 的Point类的构造方法。
+	*/
+
+	/*
+		Point类除了构造方法，还定义了一个toString方法。注意，定义“类”的方法的时候，前面不需要加上function这个关键字，直接把函数定义放进去了就可以了。另外，方法之间不需要逗号分隔，加了会报错。
+	*/
+}
+// test02();	
+
+
+function test03(){
+	// ES6 的类，完全可以看作构造函数的另一种写法。
+	class Point{
+
+	}
+
+	console.log(typeof Point);  // function 
+	console.log(Point===Point.prototype.constructor); // true
+}
+// test03();
+
+function test04(){
+	class Bar{
+		doStuff(){
+			console.log('stuff'); // stuff
+		}
+	}
+
+	var b=new Bar();
+	b.doStuff();
+}
+// test04();
+
+function test05(){
+	// 在类的实例上面调用方法，其实就是调用原型上的方法。
+	class B{}
+	let b=new B()
+	console.log(b.constructor===B.prototype.constructor); // true	
+}
+// test05();
+</script>
+</body>
+</html>
