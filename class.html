@@ -102,6 +102,15 @@ function test06(){
 	}
 
 	// 上面代码中，定义了一个空的类Point，JavaScript 引擎会自动为它添加一个空的constructor方法。
+	
+	// constructor方法默认返回实例对象（即this），完全可以指定返回另外一个对象。
+	class Foo{
+		constructor(){
+			return Object.create(null);
+		}
+	}
+
+	console.log(new Foo() instanceof Foo)	// false
 }
 // test06()
 </script>
