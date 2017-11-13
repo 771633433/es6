@@ -180,5 +180,28 @@
 		  		console.log(iterator.next()); // { value: undefined, done: true }
 		  }
 		  // test08()
+		
+		
+		// 遍历接口的实现
+	function makeIterator(array){
+		var nextIndex=0;
+		return{
+			nextIndex(){
+				if(nextIndex<array.length){
+					var result=array[nextIndex];
+					nextIndex++;
+					return{value:result,done:false}
+				}else{
+					return{done:true}
+				}
+			}
+		}
+
+	}
+var it=makeIterator([100,200,300]);
+console.log(it.nextIndex());  // {value:100,done:false}
+console.log(it.nextIndex());  // {value:200,done:false}
+console.log(it.nextIndex());  // {value:300,done:false}
+console.log(it.nextIndex());  // {done:true}
 </body>
 </html>
