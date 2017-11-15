@@ -215,6 +215,67 @@ var it=makeIterator([100,200,300]);
 // console.log(it.nextIndex());  // {value:200,done:false}
 // console.log(it.nextIndex());  // {value:300,done:false}
 // console.log(it.nextIndex());  // {done:true}
+		
+
+function test09(){
+
+		var obj={
+			name:'david',
+			age: 30,
+			tel: '139234'
+		}
+
+		// 报错, obj is not iterable  对象不能遍历
+
+		/*
+		for(var value of obj){
+			console.log(value);
+		}
+		*/
+
+		//数组可以遍历
+		var arr1=['h','t','m','l'];
+		/*
+			for(var val of arr1){
+				console.log(val);  // h t m l
+			}
+		*/
+
+		Object.prototype[Symbol.iterator]=function(){
+			var keys=Object.keys(this);
+			// keys是个数组 ['name','age','tel']
+			var nextIndex=0;
+			return{
+				next:()=>{
+					if(nextIndex<keys.length){
+						var result=this[keys[nextIndex]];
+						nextIndex++;
+						return {value:result,done:false}
+					}else{
+						return{value:undefined,done:true}
+					}
+				}
+			}
+		}
+
+// 给Object的原型上面加一个 Symbol.iterator方法就可以实现对象的遍历
+		for(var val of obj){
+			console.log(val); // david 30 139234
+		}
+	}
+	 test09();
+
+
+	function test10(){
+		var obj2={
+			name:'html',
+			price:23,
+			year:1991
+		}
+		// Object.keys() 输出的是一个数组，存放object的所有key值
+		console.log(Object.keys(obj2)); //   ['name','price','year']
+	}
+	//test10();
 </script>
 </body>
 </html>
