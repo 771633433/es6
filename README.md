@@ -6,6 +6,8 @@
 ***
 
 [1. let和const命令](https://www.jianshu.com/p/93c7e3311dad)
+<br/>
+[2. 变量的解构赋值](https://www.jianshu.com/p/6c5dad22e45f)
 
 
 
