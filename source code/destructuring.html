@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+	<title>变量的解构赋值</title>
+</head>
+<body>
+	<script type="text/javascript">
+	  // 1.数组的解构赋值
+		// es6允许按照一定模式,从数组对象中取值,对变量进行赋值
+		function test01(){
+			let a=1;
+			let b=2;
+			let c=3;
+		  // es6允许写成下面这样
+		  let [a,b,c]=[1,2,3];
+		  let[foo,[[bar],baz]]=[1,[[2],3]];
+		  foo // 1
+		  bar // 2
+		  baz // 3
+		  let[x,,y]=[1,2,3];
+		  x // 1
+		  y // 3
+		}
+	// 2.对象的解构赋值
+		function test02(){
+			let {foo,bar}={bar:123,foo:456};
+			console.log(foo); // 456
+			console.log(bar); // 123
+		}
+		// test02();
+	// 3.字符串的解构赋值
+		function test03(){
+			// 字符串也可以解构赋值
+			const [a,b,c,d,e]='hello';
+			console.log(a); // h
+			console.log(b); // e
+			console.log(c); // l
+			console.log(d); // l
+			console.log(e); // o
+		}
+		// test03();
+	// 5.函数参数的解构赋值
+		function test04([x,y]){
+			return x+y;
+		}
+		// console.log(test04([1,2])); // 3
+	// 7.用途
+		/*	1.交换变量的值 */
+		function test05(){
+			let x=1;
+			let y=2;
+			[x,y]=[y,x];
+			console.log(x); // 2
+			console.log(y); // 1
+		}
+		// test05();
+		/* 4.提取JSON数据 */
+		function test06(){
+			let jsonData={
+			 	id:42,
+			 	status:"OK",
+			 	data:[123,456]
+		    };
+		    let{id,status,data:number}=jsonData;
+		    console.log(id,status,number);
+		}
+		 test06(); // 42 'OK' [123,456]
+	</script>
+</body>
+</html>
