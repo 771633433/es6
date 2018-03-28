@@ -7,6 +7,9 @@
 <br/>
 <br>
 [2. 变量的解构赋值](https://www.jianshu.com/p/6c5dad22e45f)
+<br/>
+<br>
+[3. 字符串的扩展](https://www.jianshu.com/p/6c63076fbc61)
 
 
 
